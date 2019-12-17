@@ -1,0 +1,56 @@
+############## Release-1.14.0 ##################
+
+env: dev Name of the environment, e.g. dev, staging or production.
+env_name: "{{ env }}"
+domain_name: sunbird-idc.niiteducation.com                #Domain on which the portal will be accessed. e.g. staging.{implementation-name}.org
+proto: https                          # Protocol
+bootstrap_user: niit
+bootstrap_key_path: /var/lib/jenkins/secrets/ops_ssh_key
+ssh_public_key_deployer: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEu9FOe00miobElOnwBR65bp+DdWl5dGmAzKOmb04z0Qt8gH0PBF5kUwzX1YsbVxf8SmbfDGiDpZ5lOQS9Xkvu+xMAdEF5OHcrr8mSLvBVPnTR9DqQ8xhfURtPJON/KYLgbAGvaJD+TRN1eQ2fpzENgxLZAbm7lcYW2mVqQMETWpUaGNVf6waAu/HoheGLl2mPuBGddplKycDcQJu8QMoWF696r/sLGi7XkKhHTiRngxdj0HiVvepr+DK9SI9icAf/PB59bK04mwiEqKJxvyqnoqU0alWYIDKnqFA4VlG1X8C2f26Xv+bw8UFGMJ+UoP6aKhr0WtU+wOHNgUPffpj niit@UBUN-SNBD-VM10"             # SSH Public key for deployer user, with which ansible will execute tasks
+
+ekstep_s3_env: qa                        # dev or qa or prod of ekstep for plugins
+learningservice_ip: 172.23.32.149                    # Load balancer IP for learning server
+searchservice_ip: 172.23.32.149                      # search service Load balancer IP
+analyticsapi_ip: 172.23.32.143                       # Analytics Service Load Balancer IP
+keycloak_url: "http://172.23.32.204"                        # Keycloak Load balancer IP; eg http://10.10.10.10
+sunbird_default_channel: sunbird               # Organization channel name which portal will connect to
+sunbird_app_name: sunbird                      # By default app name will be sunbird
+azure_account_name: sunbirdidc                    # Storage account name for blobs
+sunbird_content_azure_storage_container: sunbird-idc-blob # Conatainer store assets/public
+swarm_load_balancer: 172.23.32.204 # Loadbalancer ip to push the logspout result to logstash in swarm
+
+# Blob where data analytics pushing content
+# Check same variable in DP common.yml
+dp_azure_account_name: sunbirdidc 
+
+
+artifacts_container: 'sunbird-idc-blob'                 # Azure blob container name to save built artifacts
+
+## Mail config
+mail_server_host:
+mail_server_username: ""
+alerts_mailing_list : ""                # Comma separated mail list for Alerts; eg: user1@mail.com, user2@mail.com
+sunbird_mail_server_from_email:         # Email ID that should be as from address in mails
+sunbird_env_logo_url:                    # put public url for logo, this logo url will be used in email sending.
+
+# Kibana oauth authorized domains; for accessing kibana dashboard
+kibana_oauth_authenticated_email_domains:
+  - domain1
+  - domain2
+kibana_oauth_authenticated_email_ids:
+  - email1
+  - email2
+monitor_alerts_mail_from_email:         # From Address for alert mails
+sunbird_msg_sender:                     # SMS from Address; exact 6 char
+sunbird_android_app_url: ""             # Playstore url of android app; default is subird.org
+
+# NOT MANDATORY VARS
+keycloak_api_management_user_email: "admin@sunbird.org"
+jenkins_url:                            # Jenkins urls to be accessed from slaves; eg "http://10.20.0.12:8080/jenkins" 
+sunbird_installation_email: "admin@sunbird.org" # fallback email for badger badge creation if the user doesn't have email address.
+upstream_url: "{{azure_account_name}}.blob.core.windows.net/{{sunbird_content_azure_storage_container}}" # Proxy url to get /assets/public
+
+
+############## Release-1.15.0 & 2.0.0 ##################
+#sunbird_cassandra_replication_strategy: '{"class":"NetworkTopologyStrategy","datacenter1":2}' # If using cluster give this value and choose datacenter and replication factor as required '{"class":"NetworkTopologyStrategy","datacenter1":2}' if not using cluster, leave this variable commented
+

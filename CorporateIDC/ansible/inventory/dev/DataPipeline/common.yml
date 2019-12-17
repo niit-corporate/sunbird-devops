@@ -1,0 +1,40 @@
+###### Release 1.14.0 and 2.0.0 #######
+
+env: dev 
+proto: https
+domain_name: sunbird-idc.niiteducation.com 
+ssh_public_key_deployer: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEu9FOe00miobElOnwBR65bp+DdWl5dGmAzKOmb04z0Qt8gH0PBF5kUwzX1YsbVxf8SmbfDGiDpZ5lOQS9Xkvu+xMAdEF5OHcrr8mSLvBVPnTR9DqQ8xhfURtPJON/KYLgbAGvaJD+TRN1eQ2fpzENgxLZAbm7lcYW2mVqQMETWpUaGNVf6waAu/HoheGLl2mPuBGddplKycDcQJu8QMoWF696r/sLGi7XkKhHTiRngxdj0HiVvepr+DK9SI9icAf/PB59bK04mwiEqKJxvyqnoqU0alWYIDKnqFA4VlG1X8C2f26Xv+bw8UFGMJ+UoP6aKhr0WtU+wOHNgUPffpj niit@UBUN-SNBD-VM10" 
+bootstrap_user: niit
+bootstrap_key_path: /var/lib/jenkins/ops_ssh_key
+
+secor_azure_container_name: "sunbird-idc-blob"
+secor_alerts_slack_channel: ""
+
+dp_azure_account_name: sunbirdidc # azure storage account name
+default_org_hash_id: "" # channel id of the organization
+
+# Data products monitoring web hooks
+data_exhaust_webhook_url: ""   ## Slack webhook
+data_exhaust_Channel: ""      ## salck channel for data products alerts
+data_exhaust_name:   
+stream_base_url: ""
+
+# Media content
+media_service_azure_tenant: "" # value have to be defined
+media_service_azure_tenant: ""
+media_service_azure_subscription_id: ""
+media_service_azure_account_name: ""
+media_service_azure_resource_group_name: ""
+media_service_azure_token_client_key: ""
+media_service_azure_token_client_secret: ""
+
+# kafka topic required by core #
+# Please do not change this #
+ingestion_kafka_topics:
+  - name: telemetry.ingestion
+    num_of_partitions: 4
+    replication_factor: 1
+    retention_time: 604800000
+  - name: telemetry.ingest
+    num_of_partitions: 4
+    replication_factor: 1
