@@ -45,7 +45,10 @@ sunbird_keycloak_required_action_link_expiration_seconds: 2592000
 sunbird_es_port: 9300
 mail_server_port: 587
 upstream_url: "{{azure_account_name}}.blob.core.windows.net/{{sunbird_content_azure_storage_container}}"
-
+cloud_storage_type: "{{cloud_storage_type}}"
+aws_storage_key: "{{aws_storage_key}}"
+aws_storage_secret: "{{aws_storage_secret}}"
+aws_storage_container: "{{aws_storage_container}}"
 ## Mailing list
 # !! Override for specific alert groups; Default will be alerts_mailing_list
 # Enable below override below variables in common.yml for team specific alerts
