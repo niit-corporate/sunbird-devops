@@ -30,6 +30,11 @@ services:
         target: /etc/nginx/conf.d/default.conf
     networks:
       - application_default
+    volumes:
+      - /mydata/ilp-static:/mounted
+      - /mydata/mobile-apps:/apps
+      - /mydata/content-directory:/content-mount
+      - /mydata/logs/proxy-proxy:/var/logs/nginx     
 
 secrets:
 {# Skip copying ssls for no domain configs #}
