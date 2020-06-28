@@ -29,7 +29,12 @@ services:
       - source: proxy-default.conf
         target: /etc/nginx/conf.d/default.conf
     networks:
-      - application_default
+      application_default:
+        aliases: # Added new aliases
+          - static-host
+          - private-static-host
+    volumes: # Added this mount path
+      - /mydata/content-directory:/content-mount
 
 secrets:
 {# Skip copying ssls for no domain configs #}
